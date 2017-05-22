@@ -1,7 +1,6 @@
 (ns clj-boot.string
   (:require [clojure.string :as str]
-            [clojure.spec.alpha :as s]
-            [clj-boot.fn-spec :refer [=>]]))
+            [clojure.spec.alpha :as s]))
 
 
 
