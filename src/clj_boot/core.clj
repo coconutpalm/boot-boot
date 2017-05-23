@@ -85,10 +85,10 @@ the 'expect' parameter."
      (check/with-bikeshed)))
 
 
-(deftask release-localrepo
+(deftask release-local
   "Build a jar and release it to the local repo."
   []
-  (comp (test)
+  (comp (alt-test)
      (notify :audible true :visual true)
      (build-jar)
      (target)))
@@ -115,14 +115,6 @@ the 'expect' parameter."
      #_(cmd :run (str "git stage site/index.html" version))
      #_(cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
      #_(cmd :run "git subtree push --prefix site origin gh-pages")))
-
-
-(deftask release-local
-  "Build a jar and release it to the local repo."
-  []
-  (comp (test)
-        (speak)
-        (build-jar)))
 
 
 (deftask snapshot
