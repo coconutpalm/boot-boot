@@ -1,6 +1,6 @@
 (def task-options
   {:project  'coconutpalm/clj-boot
-   :version  "0.3.2"
+   :version  "0.3.3"
    :project-name "clj-boot"
    :project-openness :open-source
 
@@ -34,8 +34,6 @@
 
                           [adzerk/bootlaces           "0.1.13"]
                           [adzerk/boot-test           "1.2.0"]
-                          [org.clojure/tools.namespace "0.3.0-alpha4"]
-                          [metosin/boot-alt-test      "0.3.2"]
                           [adzerk/boot-jar2bin        "1.1.0"]
                           [boot/pod                   "2.7.1"] ;; FIXME: These need to be fixed to boot.version
                           [boot/aether                "2.7.1"]

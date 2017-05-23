@@ -13,7 +13,6 @@
             [samestep.boot-refresh :refer [refresh]]
             [nightlight.boot :refer [nightlight]]
 
-            [metosin.boot-alt-test :refer [alt-test]]
             [adzerk.boot-test :refer [test]]
             [adzerk.bootlaces :refer :all]
             [tolitius.boot-check :as check]
@@ -69,7 +68,7 @@ the 'expect' parameter."
   "Interactively dev/test"
   []
   (comp (watch)
-     (alt-test)
+     (test)
      (refresh)
      (repl :server true)
      (nightlight :port 0)
@@ -88,7 +87,7 @@ the 'expect' parameter."
 (deftask release-local
   "Build a jar and release it to the local repo."
   []
-  (comp (alt-test)
+  (comp (test)
      (notify :audible true :visual true)
      (build-jar)
      (target)))
