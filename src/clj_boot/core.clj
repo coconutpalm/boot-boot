@@ -1,5 +1,5 @@
 (ns clj-boot.core
-  (:refer-clojure :exclude [test])
+  (:refer-clojure :exclude [test reader-conditional tagged-literal])
   (:require [clojure.pprint :refer [pprint]]
             [boot.core :refer :all]
             [boot.util :refer :all]
@@ -13,6 +13,7 @@
             [samestep.boot-refresh :refer [refresh]]
             [nightlight.boot :refer [nightlight]]
 
+            [metosin.boot-alt-test :refer [alt-test]]
             [adzerk.boot-test :refer [test]]
             [adzerk.bootlaces :refer :all]
             [tolitius.boot-check :as check]
@@ -68,10 +69,10 @@ the 'expect' parameter."
   "Interactively dev/test"
   []
   (comp (watch)
+     (alt-test)
      (refresh)
      (repl :server true)
      (nightlight :port 0)
-     (test)
      (notify :audible true :visual true)))
 
 
@@ -84,10 +85,10 @@ the 'expect' parameter."
      (check/with-bikeshed)))
 
 
-(deftask release-local
+(deftask release-localrepo
   "Build a jar and release it to the local repo."
   []
-  (comp (test-with-settings)
+  (comp (test)
      (notify :audible true :visual true)
      (build-jar)
      (target)))
