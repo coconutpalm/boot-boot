@@ -4,31 +4,30 @@
             [clj-foundation.fn-spec :refer [=>]]))
 
 
-(^:private def delimeters [\' \"])
-(^:private def delimeter-set (set delimeters))
+(^:private def delimiters [\' \"])
+(^:private def delimiter-set (set delimiters))
 
 (s/def ::word-vector     (s/coll-of string?))
-(s/def ::maybe-delimeter #(or (delimeter-set %)
+(s/def ::maybe-delimiter #(or (delimiter-set %)
                               (nil? %)))
-(s/def ::merge-result    (s/tuple ::word-vector ::maybe-delimeter string?))
+(s/def ::merge-result    (s/tuple ::word-vector ::maybe-delimiter string?))
 
 
-(=> merge-strings [::word-vector ::maybe-delimeter string? string?] ::merge-result
+(=> merge-strings [::word-vector ::maybe-delimiter string? string?] ::merge-result
   "Given a vector of strings, merge strings beginning/ending with quotes into
   a single string and return a vector standalone words and quoted strings.
   Nested / unbalanced quotes will return undefined results."
-  [[result delimeter merging] next]
+  [[result delimiter merging] next]
 
   (let [start (first (seq next))
         end   (last (seq next))]
     (cond
-      (and ((set delimeters) start)
-           ((set delimeters) end))   [(conj result next) nil ""]
-      ((set delimeters) start)       [result start next]
-      ((set delimeters) end)         [(conj result (str merging " " next)) nil ""]
-      (nil? delimeter)               [(conj result next) nil ""]
-      :else                          [result delimeter (str merging " " next)])))
-
+      (and ((set delimiters) start)
+           ((set delimiters) end))   [(conj result next) nil ""]
+      ((set delimiters) start)       [result start next]
+      ((set delimiters) end)         [(conj result (str merging " " next)) nil ""]
+      (nil? delimiter)               [(conj result next) nil ""]
+      :else                          [result delimiter (str merging " " next)])))
 
 
 (=> delimited-words [string?] ::word-vector
