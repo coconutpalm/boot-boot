@@ -69,9 +69,9 @@ the 'expect' parameter."
   []
   (comp (watch)
      (refresh)
-     (test)
      (repl :server true)
      (nightlight :port 0)
+     (test)
      (notify :audible true :visual true)))
 
 
