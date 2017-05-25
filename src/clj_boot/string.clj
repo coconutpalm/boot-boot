@@ -22,11 +22,11 @@
   (let [start (first (seq next))
         end   (last (seq next))]
     (cond
+      (nil? delimeter)               [(conj result next) nil ""]
       (and ((set delimeters) start)
            ((set delimeters) end))   [(conj result next) nil ""]
       ((set delimeters) start)       [result start next]
       ((set delimeters) end)         [(conj result (str merging " " next)) nil ""]
-      (nil? delimeter)               [(conj result next) nil ""]
       :else                          [result delimeter (str merging " " next)])))
 
 
