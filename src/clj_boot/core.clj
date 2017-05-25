@@ -68,8 +68,8 @@ the 'expect' parameter."
   "Interactively dev/test"
   []
   (comp (watch)
-     (test)
      (refresh)
+     (test)
      (repl :server true)
      (nightlight :port 0)
      (notify :audible true :visual true)))
