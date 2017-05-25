@@ -22,11 +22,11 @@
   (let [start (first (seq next))
         end   (last (seq next))]
     (cond
-      (nil? delimeter)               [(conj result next) nil ""]
       (and ((set delimeters) start)
            ((set delimeters) end))   [(conj result next) nil ""]
       ((set delimeters) start)       [result start next]
       ((set delimeters) end)         [(conj result (str merging " " next)) nil ""]
+      (nil? delimeter)               [(conj result next) nil ""]
       :else                          [result delimeter (str merging " " next)])))
 
 
@@ -37,9 +37,10 @@
   results."
   [s]
   (let [words (str/split s #"\s")
-        delimeted-word-machine (reduce merge-strings [[] nil ""] words)
-        merged-strings (first delimeted-word-machine)
-        remainder (last delimeted-word-machine)]
+        delimited-word-machine (reduce merge-strings [[] nil ""] words)
+        merged-strings (first delimited-word-machine)
+        remainder (last delimited-word-machine)
+        delimiter (second delimited-word-machine)]
     (if (empty? remainder)
       merged-strings
-      (conj merged-strings remainder))))
+      (conj merged-strings (str remainder delimiter)))))
