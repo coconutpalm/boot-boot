@@ -46,6 +46,6 @@
 
   (testing "When missing final delimiter does not lose words and adds the final delimiter"
     (is (= ["The" "'blind'" "man" "said" "'I see you.'"]
-           (delimited-words "The 'blind' man said 'I see you.'"))))
+           (delimited-words "The 'blind' man said 'I see you."))))
 
   (testing "Other cases' behavior is undefined"))
