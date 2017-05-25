@@ -32,7 +32,7 @@
 
 (=> delimited-words [string?] ::word-vector
   "Split a string into words, respecting single or double quoted substrings.
-  Nested quotes are not supported.  Unbalenced quotes will return undefined
+  Nested quotes are not supported.  Unbalanced quotes will return undefined
   results."
   [s]
   (let [words (str/split s #"\s")
