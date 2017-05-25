@@ -3,9 +3,39 @@
             [clj-boot.string :refer :all]))
 
 
-;; Waiting for => from clj-foundation to finish
-
 (testing "merge-strings"
-  (testing ""))
+  (testing "When not merging, delimiter is nil and words are added to result"
+    (is (= [["I" "see"] nil ""]
+           (-> [[] nil ""]
+              (merge-strings "I")
+              (merge-strings "see")))))
+
+  (testing "Delimiter characters"
+    (testing "A word beginning and ending with a delimiter char is added to result"
+      (is (= [["I" "'see'"] nil ""]
+             (-> [[] nil ""]
+                (merge-strings "I")
+                (merge-strings "'see'")))))
+
+    (testing "After a start delimiter, the delimiter is noted and words are added to 'merging'"
+      (is (= [["The" "blind" "man" "said"] \' "'I see"])
+          (-> [[] nil ""]
+             (merge-strings "The")
+             (merge-strings "blind")
+             (merge-strings "man")
+             (merge-strings "said")
+             (merge-strings "'I")
+             (merge-strings "see"))))
+
+    (testing "On end delimiter, merged words are added to result and 'merging' state is cleared."
+      (is (= [["The" "blind" "man" "said" "'I see you.'"] nil ""])
+          (-> [[] nil ""]
+             (merge-strings "The")
+             (merge-strings "blind")
+             (merge-strings "man")
+             (merge-strings "said")
+             (merge-strings "'I")
+             (merge-strings "see")
+             (merge-strings "you.'"))))))
 
 (testing "delimited-words")
