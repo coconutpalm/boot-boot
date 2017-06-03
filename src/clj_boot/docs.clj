@@ -1,6 +1,6 @@
 (ns clj-boot.docs
-  (:require [hiccup.core :refer [html]]
-            [hiccup.page :refer [html5 include-css include-js]]))
+  (:require [hiccup.page :refer [html5]]))
+
 
 
 (defn renderer [{content :entry}]
@@ -19,13 +19,8 @@
              :integrity "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
              :crossorigin "anonymous"}]
 
-     ;; font-family: 'Source Sans Pro', sans-serif;
-     ;; font-family: 'Source Code Pro', monospace;
-     ;; font-family: 'Source Serif Pro', serif;
      [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro"}]
 
-     ;; font-family: 'Josefin Slab', serif;
-     ;; font-family: 'Josefin Sans', sans-serif;
      [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab"}]
 
      [:script {:src "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
