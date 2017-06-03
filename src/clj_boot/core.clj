@@ -8,6 +8,7 @@
             [clj-boot.boot-cloverage :rever [cloverage]]
             [clj-boot.string :refer [delimited-words]]
 
+            [cpmcdaniel.boot-copy :refer [copy]]
             [codox.boot :refer [codox]]
             [io.perun :refer [markdown render]]
             [samestep.boot-refresh :refer [refresh]]
@@ -64,6 +65,23 @@ the 'expect' parameter."
             (next-handler fileset')))))))
 
 
+(deftask generate-site
+  "Generate updated site."
+  []
+  (comp (markdown)
+     (render :renderer 'clj-boot.docs/renderer)
+     (codox)
+     (target)
+     (copy :output-dir "./" :matching #{#"\.*site\.*"})))
+
+
+(deftask write-site
+  "A development mode for interactively working on the web site documentation."
+  []
+  (comp (watch)
+     (generate-site)))
+
+
 (deftask dev
   "Interactively dev/test"
   []
@@ -103,17 +121,15 @@ the 'expect' parameter."
       fileset)))
 
 
-(deftask release-docs
-  "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490"
+(deftask release-site
+  "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490
+  generate-site must be called first to update the web site."
   [v version VERSION str "The current project version"]
-  (comp (markdown)
-     (render :renderer 'clj-boot.docs/renderer)
-     (codox)
-     (target)
-     #_(cmd :run (str "git add site/codox/" version))
-     #_(cmd :run (str "git stage site/index.html" version))
-     #_(cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
-     #_(cmd :run "git subtree push --prefix site origin gh-pages")))
+  (comp
+   (cmd :run (str "git add site"))
+   (cmd :run (str "git stage site"))
+   (cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
+   (cmd :run "git subtree push --prefix site origin gh-pages")))
 
 
 (deftask snapshot
@@ -166,7 +182,7 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
                                                     :password (System/getenv "CLOJARS_PASS")}]))
 
   (task-options!
-   release-docs {:version version}
+   release-site {:version version}
 
    test-with-settings {:sources test-sources
                        :resources test-resources}
@@ -185,9 +201,11 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
         :version     version
         :scm         {:url scm-url}}
 
+   render {:out-dir "site"}
+
    codox {:name project-name
           :description description
           :version     version
           :metadata    {:doc/format :markdown}
-          :output-path (str "public/codox/" version)
+          :output-path (str "site/codox/")
           :source-uri  (str scm-url "/blob/{version}/{filepath}#L{line}")}))
