@@ -1,6 +1,6 @@
 (def task-options
   {:project  'coconutpalm/clj-boot
-   :version  "0.3.4"
+   :version  "0.3.5"
    :project-name "clj-boot"
    :project-openness :open-source
 
@@ -21,8 +21,9 @@
                           [coconutpalm/clj-foundation "0.10.0"]
 
                           ;; Boot tasks
-                          [boot-codox                 "0.10.2"]
+                          [boot-codox                 "0.10.3"]
                           [perun                      "0.3.0"]
+                          [cpmcdaniel/boot-copy       "1.0"]
                           [hiccup                     "1.0.5"]
                           [org.clojure/test.check     "0.9.0"]
                           [samestep/boot-refresh      "0.1.0"]
