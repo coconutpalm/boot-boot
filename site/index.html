@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta content="Library Documentation - clj-boot - Batteries included Clojure builds based on Boot." itemprop="description" name="description"><title>clj-boot</title><link href="/favicon.ico" rel="shortcut icon"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet"><script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head><body><div class="jumbotron"><div class="container"><h1>clj-boot</h1><p>Batteries included Clojure builds based on Boot.</p></div></div><div class="container"><div class="row"><div class="col-md-12"><h2><a href="#benefits" name="benefits"></a>Benefits</h2>
 <ul>
-  <li>Common build tasks are maintained in a single place, reducing repetition in your build files. (Either clone this repository and customize it for your site or use it as-is from Clojars.)</li>
+  <li>A clean, DRY format for common Boot metadata without sacrificing Boot's flexibility.</li>
+  <li>Maintain common build tasks in a single place, reducing repetition in your build files. (Either clone this repository and customize it for your site or use it as-is from Clojars.)</li>
   <li>Automatically generate documentation using Codox, supplement it using Markdown, and publish the results to gh_pages.</li>
-  <li><code>boot dev</code> automatically rebuilds, retests, and reloads the REPL whenever you save.</li>
-  <li><a href="https://sekao.net/nightlight/">Nightlight</a> live web REPL is preconfigured.</li>
-  <li>Deploy to Clojars is preconfigured. Just add your credentials. See the documentation for details.</li>
-  <li>Standard high-level tasks for common operations like running tests, then building a JAR or Uberjar.</li>
+  <li><code>boot dev</code> ** Automatically rebuilds, retests, and reloads the REPL whenever you save. ** Automatic <a href="https://sekao.net/nightlight/">Nightlight</a> live web notebook.</li>
+  <li>Automatically deploy projects of type <code>:open-source</code> to Clojars. Just add your credentials.</li>
 </ul>
 <p>clj-boot is built and deployed using itself.</p>
 <h2><a href="#install-use" name="install-use"></a>Install / use</h2>
@@ -16,13 +15,11 @@
 </ul>
 <h2><a href="#documentation" name="documentation"></a>Documentation</h2>
 <ul>
+  <li><a href="getting-started.html">Getting Started</a></li>
   <li><a href="codox/index.html">Codox</a></li>
 </ul>
 <h2><a href="#future" name="future"></a>Future</h2>
 <ul>
-  <li>Automatically publish documentation</li>
-  <li>Enable push to gh_pages from the publish tasks for project-type :open-source; push docs to S3 for project-type :private</li>
-  <li>Document how to set up gpg, what to put inside bootx</li>
   <li>"Getting Started" document covering the vars at the top of build.boot and the <code>(set-task-options!)</code> command</li>
   <li><code>boot new</code> template for clj-boot projects</li>
   <li>Generate OSGi metadata / support OSGi runtime</li>
