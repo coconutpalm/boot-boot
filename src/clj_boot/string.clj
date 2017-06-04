@@ -1,4 +1,5 @@
 (ns clj-boot.string
+  "String processing utilities for splitting command line strings into argument vectors."
   (:require [clojure.string :as str]
             [clojure.spec.alpha :as s]
             [clj-foundation.fn-spec :refer [=>]]))

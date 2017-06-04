@@ -1,4 +1,5 @@
 (ns clj-boot.string-test
+  "Test the clj-boot.string namespace.  Not API."
   (:require [clojure.test :refer :all]
             [clj-boot.string :refer :all]))
 

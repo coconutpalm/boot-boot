@@ -1,4 +1,5 @@
 (ns clj-boot.core
+  "clj-boot's built-in tasks are defined here."
   (:refer-clojure :exclude [test reader-conditional tagged-literal])
   (:require [clojure.pprint :refer [pprint]]
             [boot.core :refer :all]
@@ -20,13 +21,18 @@
             [adzerk.boot-jar2bin :refer :all]))
 
 
-(def project-types #{:open-source :private})
+(def project-types
+  "Available project types set.  Currently one of :open-source or :private.  Only :open-source projects
+  can push to Clojars."
+  #{:open-source :private})
 
-(def project-type (ref :private))
+(def project-type
+  "The current project type ref.  Defaults to :private."
+  (ref :private))
 
 
 (deftask assert-project-type
-  "Fails the build if the current project is not a legal type.  Legal types are members of the
+  "A task that fails the build if the current project is not a legal type.  Legal types are members of the
 project-types set.  In addition, may test that the current project is exactly a single type via
 the 'expect' parameter."
   [e expect PROJECT-TYPE kw "The expected project type"]
@@ -42,31 +48,9 @@ the 'expect' parameter."
       (next-handler fileset))))
 
 
-(deftask test-with-settings
-  "Run (test) with the specified settings added to the environment.  Restores the original environment
-  after running tests."
-  [s sources PATH str "The directory where test source code is located."
-   r resources PATH str "The directory where testing resources are located."]
-  (let [test-middleware (test)
-        test-handler (test-middleware identity)]
-    (fn middleware [next-handler]
-      (fn handler [fileset]
-        (let [baseline-sources (get-env :source-paths)
-              baseline-resources (get-env :resource-paths)]
-
-          (when sources
-            (set-env! :source-paths #(conj % sources)))
-          (when resources
-            (set-env! :resource-paths #(conj % resources)))
-
-          (let [fileset' (test-handler fileset)]
-            (set-env! :source-paths baseline-sources
-                      :resource-paths baseline-resources)
-            (next-handler fileset')))))))
-
-
 (deftask generate-site
-  "Generate updated site."
+  "Generate web site from resources/index.md and Codox generated from source code.  See the Getting Started
+Guide for details."
   []
   (comp (markdown)
      (render :renderer 'clj-boot.docs/renderer)
@@ -76,14 +60,17 @@ the 'expect' parameter."
 
 
 (deftask write-site
-  "A development mode for interactively working on the web site documentation."
+  "Interactively work on web site documentation.  Watches the file system and calls (generate-site)
+whenever anything changes."
   []
   (comp (watch)
      (generate-site)))
 
 
 (deftask dev
-  "Interactively dev/test"
+  "Interactively dev/test with a live application that automatically reloads changed namespaces.
+When you start dev mode, the nrepl server port is printed.  Also, automatically starts the 'nightlight'
+web based Clojure notebook and live coding environment (prints the URL at startup)."
   []
   (comp (watch)
      (refresh)
@@ -103,7 +90,7 @@ the 'expect' parameter."
 
 
 (deftask release-local
-  "Build a jar and release it to the local repo."
+  "Build a jar and release it to the local repository."
   []
   (comp (test)
      (notify :audible true :visual true)
@@ -112,7 +99,7 @@ the 'expect' parameter."
 
 
 (deftask cmd
-  "Run a shell command"
+  "Run a shell command in a task."
   [r run COMMAND str "The shell command to run."]
   (let [args (delimited-words run)]
     (with-pre-wrap fileset
@@ -123,7 +110,7 @@ the 'expect' parameter."
 
 (deftask release-site
   "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490
-  generate-site must be called first to update the web site."
+  for the technique used."
   [v version VERSION str "The current project version"]
   (comp (generate-site)
      (cmd :run (str "git add site"))
@@ -133,7 +120,10 @@ the 'expect' parameter."
 
 
 (deftask snapshot
-  "Build and release a snapshot."
+  "Build and release a snapshot to Clojars.  Project type must be :open-source.
+
+Depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GPG_PASS, envars.
+See the Getting Started Guide for details."
   []
   (comp (assert-project-type :expect :open-source)
      (release-local)
@@ -141,11 +131,10 @@ the 'expect' parameter."
 
 
 (deftask release
-  "Release a Jar.  If project-type is :open-source, pushes to Clojars.  If project-type is :private,
-pushes to a configured repository.  If project-type is :private and no respository is configured,
-aborts.
+  "Release a Jar to Clojars.  Project type must be :open-source.
 
-For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GPG_PASS, envars."
+Depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GPG_PASS, envars.
+See the Getting Started Guide for details."
   []
   (comp (assert-project-type :expect :open-source)
      (release-local)
@@ -156,7 +145,7 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
 (deftask uberjar
   "Run tests, and build an uberjar."
   []
-  (comp (test-with-settings)
+  (comp (test)
      (notify :audible true :visual true)
      (pom)
      (uber)
@@ -172,7 +161,8 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
 
 
 (defn set-task-options!
-  "Set default options for standard tasks."
+  "Set default options for standard tasks.  This must be called at the end of build.boot.
+  See the Getting Started Guide for details."
   [{:keys [project project-name project-openness description version scm-url test-sources test-resources push-repository]}]
 
   (bootlaces! version)
@@ -184,9 +174,6 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
 
   (task-options!
    release-site {:version version}
-
-   test-with-settings {:sources test-sources
-                       :resources test-resources}
 
    push (cond
           push-repository                   push-repository

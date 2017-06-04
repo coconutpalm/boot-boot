@@ -1,5 +1,7 @@
 (ns clj-boot.boot-cloverage
-  "From https://raw.githubusercontent.com/FossiFoo/cloverage/boot/boot-cloverage/src/cloverage/boot_cloverage.clj
+  "A (cloverage) task to add to a test pipeline to generate coverage data.
+
+  From https://raw.githubusercontent.com/FossiFoo/cloverage/boot/boot-cloverage/src/cloverage/boot_cloverage.clj
   until the corresponding PR is merged."
   (:require [boot.core :as core]
             [boot.pod :as pod]
