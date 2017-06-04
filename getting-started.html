@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta content="Library Documentation - clj-boot - Batteries included Clojure builds based on Boot." itemprop="description" name="description"><title>clj-boot</title><link href="/favicon.ico" rel="shortcut icon"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet"><script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head><body><div class="jumbotron"><div class="container"><h1>clj-boot</h1><p>Batteries included Clojure builds based on Boot.</p></div></div><div class="container"><div class="row"><div class="col-md-12"><h2><a href="#getting-started" name="getting-started"></a>Getting Started</h2>
+<p>This Getting Started guide covers the common case of using <code>clj-boot</code> as-is. Advanced developers may want to clone clj-boot and customize it for their own projects and use-cases.</p>
+<h2><a href="#minimal-build-boot" name="minimal-build-boot"></a>Minimal build.boot</h2>
+<p>The following <code>build.boot</code> is a good start for new projects.</p>
+<p>Since <code>clj-boot</code> provides default build tasks maintained in a single place, and multiple build tasks consume the same metadata, <code>clj-boot</code> supplies the basic project metadata in a map, and uses that map to configure itself in <code>set-task-options!</code> (at the bottom of the file).</p>
+<p>The resulting build file does not prevent you from composing the built-in tasks with your own or creating your own tasks, but I feel delivers the best of the declarative and task-based build worlds.</p>
+<pre><code class="clojure">(def task-options
+  {:project &#39;you/your-project
+   :version &quot;0.1.0-SNAPSHOT&quot;
+   :project-name &quot;your-project&quot;
+   :project-openness :open-source  ; (or :closed-source)
+
+   :description &quot;Project description.&quot;
+
+   :scm-url &quot;https://github.com/coconutpalm/clj-foundation&quot;})
+
+
+(set-env! :resource-paths #{&quot;resources&quot;}
+          :source-paths   #{&quot;src&quot; &quot;test&quot;}
+
+          :dependencies   &#39;[[org.clojure/clojure  &quot;1.8.0&quot;]  ; Your Clojure version
+                            ; Your dependencies here
+                            [coconutpalm/clj-boot &quot;LATEST&quot; :scope &quot;test&quot;]]) ; Or a specific version
+
+(require &#39;[clj-boot.core :refer :all])
+
+(set-task-options! task-options)
+</code></pre>
+<h2><a href="#is-used-to-generate-the-site-home-page" name="is-used-to-generate-the-site-home-page"></a><code>/resources/index.md</code> is used to generate the site home page</h2>
+<p>Currently the template hard-codes a Twitter Bootstrap based site. At some point I'll find a way to make that swappable/themeable.</p>
+<p>For now, here's what you need to know:</p>
+<ul>
+  <li>Metadata at the top of the Markdown file is merged into the site template.</li>
+  <li>The master site template must be named <code>index.md</code> and must be stored in your <code>resources</code> folder.</li>
+  <li>Codox is automatically placed in a <code>codox</code> folder inside the <code>site</code> folder, so be sure to link that somewhere in your template.</li>
+  <li><code>.md</code> files in your <code>docs</code> folder will automatically be added to your Codox.</li>
+  <li><a href="https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md">Something like this</a> is a good site <code>index.md</code> start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.</li>
+</ul>
+<h2><a href="#if-you-want-to-deploy-to-clojars-" name="if-you-want-to-deploy-to-clojars-"></a>If you want to deploy to Clojars...</h2>
+<p>Clojars deployment for <code>:open-source</code> projects is supported out of the box. Here's how.</p>
+<p>Prerequisites:</p>
+<ul>
+  <li>A PGP public/private key pair</li>
+  <li>A Clojars account</li>
+</ul>
+<p>(I won't go into how to install PGP for each platform and generate a public/private key pair here; there are plenty of other good tutorials online. See <a href="https://gist.github.com/chrisroos/1205934">https://gist.github.com/chrisroos/1205934</a> under "method 2" to import deployment/signing keys into your account if somebody else is managing keys for your organization.)</p>
+<p>Once you have these things, just set the appropriate environment variables and <code>boot release</code> will deploy to Clojars and push your documentation to a branch called <code>gh-pages</code> in your Git repo. Placing a Bash script like the following (or the equivalent on Windows) in an appropriate place will do:</p>
+<pre><code class="bash">#!/usr/bin/env bash
+
+export BOOT_JVM_OPTIONS=&#39;-client -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Xverify:none -Xmx2g -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -XX:-OmitStackTraceInFastThrow&#39;
+
+export CLOJARS_USER=&#39;clojars-username&#39;
+export CLOJARS_PASS=&#39;clojars-password&#39;
+export CLOJARS_GPG_USER=&#39;username@host.for.gpg.com&#39;
+export CLOJARS_GPG_PASS=&#39;gpg-key-password-for-signing&#39;
+</code></pre>
+<h2><a href="#next-steps" name="next-steps"></a>Next steps</h2>
+<p>The <code>clj-boot</code> <a href="codox/index.html">Codox</a> lists the supplied Boot tasks along with hints for when to use each one.</p></div></div></div></body></html>
