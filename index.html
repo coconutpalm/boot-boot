@@ -3,8 +3,19 @@
 <ul>
   <li>A clean, DRY format for common Boot metadata without sacrificing Boot's flexibility.</li>
   <li>Maintain common build tasks in a single place, reducing repetition in your build files. (Either clone this repository and customize it for your site or use it as-is from Clojars.)</li>
-  <li>Automatically generate documentation using Codox, supplement it using Markdown, and publish the results to gh_pages.</li>
-  <li><code>boot dev</code> ** Automatically rebuilds, retests, and reloads the REPL whenever you save. ** Automatic <a href="https://sekao.net/nightlight/">Nightlight</a> live web notebook.</li>
+  <li><code>boot dev</code>
+    <ul>
+      <li>Automatically rebuilds, retests, and reloads the REPL whenever you save.</li>
+      <li>Automatic <a href="https://sekao.net/nightlight/">Nightlight</a> live web notebook.</li>
+    </ul>
+  </li>
+  <li><code>boot write-site</code> - Easily create a project web site, styled with Twitter Bootstrap.
+    <ul>
+      <li>Just write content in Markdown. The site is recreated on save.</li>
+      <li>Automatically generates API documentation using Codox.</li>
+      <li>Instantly publish to Github Pages with <code>boot release-site</code>.</li>
+    </ul>
+  </li>
   <li>Automatically deploy projects of type <code>:open-source</code> to Clojars. Just add your credentials.</li>
 </ul>
 <p>clj-boot is built and deployed using itself.</p>
