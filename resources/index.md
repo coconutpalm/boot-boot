@@ -15,7 +15,7 @@ description: Batteries included Clojure builds based on Boot.
     * Instantly publish to Github Pages with ```boot release-site```.
 * ```boot release``` - Deploy projects of type ```:open-source``` to Clojars.  Just set your credentials in the right environment variables.
 
-clj-boot is built and deployed using itself.
+clj-boot is built, documented, and deployed using itself.
 
 
 ## Install / use
