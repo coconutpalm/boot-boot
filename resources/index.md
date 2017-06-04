@@ -13,7 +13,7 @@ description: Batteries included Clojure builds based on Boot.
     * Just write content in Markdown.  The site is recreated on save.
     * Automatically generates API documentation using Codox.
     * Instantly publish to Github Pages with ```boot release-site```.
-* Automatically deploy projects of type ```:open-source``` to Clojars.  Just add your credentials.
+* ```boot release``` - Deploy projects of type ```:open-source``` to Clojars.  Just set your credentials in the right environment variables.
 
 clj-boot is built and deployed using itself.
 
