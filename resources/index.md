@@ -6,10 +6,13 @@ description: Batteries included Clojure builds based on Boot.
 
 * A clean, DRY format for common Boot metadata without sacrificing Boot's flexibility.
 * Maintain common build tasks in a single place, reducing repetition in your build files.  (Either clone this repository and customize it for your site or use it as-is from Clojars.)
-* Automatically generate documentation using Codox, supplement it using Markdown, and publish the results to gh_pages.
 * ```boot dev```
-** Automatically rebuilds, retests, and reloads the REPL whenever you save.
-** Automatic [Nightlight](https://sekao.net/nightlight/) live web notebook.
+    * Automatically rebuilds, retests, and reloads the REPL whenever you save.
+    * Automatic [Nightlight](https://sekao.net/nightlight/) live web notebook.
+* ```boot write-site``` - Easily create a project web site, styled with Twitter Bootstrap.
+    * Just write content in Markdown.  The site is recreated on save.
+    * Automatically generates API documentation using Codox.
+    * Instantly publish to Github Pages with ```boot release-site```.
 * Automatically deploy projects of type ```:open-source``` to Clojars.  Just add your credentials.
 
 clj-boot is built and deployed using itself.
