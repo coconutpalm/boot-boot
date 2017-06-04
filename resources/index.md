@@ -20,7 +20,9 @@ clj-boot is built, documented, and deployed using itself.
 
 ## Install / use
 
-Add the latest version to your build.boot dependencies:
+```clj-boot``` uses a standard Boot project directory structure, but adds some conventions about how to structure your ```build.boot``` file.  Sample starter files are included in the [Getting Started](getting-started.html) guide.
+
+The latest version is:
 
 * [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/clj-boot.svg)](https://clojars.org/coconutpalm/clj-boot)
 
@@ -30,9 +32,10 @@ Add the latest version to your build.boot dependencies:
 * [Codox](codox/index.html)
 
 
-## Future
+## Roadmap
 
-* "Getting Started" document covering the vars at the top of build.boot and the ```(set-task-options!)``` command
 * ```boot new``` template for clj-boot projects
+* Themes for documentation pages?
+* Move index.md out of ```resources``` if possible.
 * Generate OSGi metadata / support OSGi runtime
 * Deploy somewhere other than Clojars for :private projects?
