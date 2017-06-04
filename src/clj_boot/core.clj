@@ -125,11 +125,11 @@ the 'expect' parameter."
   "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490
   generate-site must be called first to update the web site."
   [v version VERSION str "The current project version"]
-  (comp
-   (cmd :run (str "git add site"))
-   (cmd :run (str "git stage site"))
-   (cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
-   (cmd :run "git subtree push --prefix site origin gh-pages")))
+  (comp (generate-site)
+     (cmd :run (str "git add site"))
+     (cmd :run (str "git stage site"))
+     (cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
+     (cmd :run "git subtree push --prefix site origin gh-pages")))
 
 
 (deftask snapshot
@@ -149,6 +149,7 @@ For Clojars, depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GP
   []
   (comp (assert-project-type :expect :open-source)
      (release-local)
+     (release-site)
      (push-release)))
 
 
