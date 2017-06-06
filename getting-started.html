@@ -28,11 +28,11 @@
 (set-task-options! task-options)
 </code></pre>
 <h2><a href="#is-used-to-generate-the-site-home-page" name="is-used-to-generate-the-site-home-page"></a><code>/resources/index.md</code> is used to generate the site home page</h2>
-<p>Currently the template hard-codes a Twitter Bootstrap based site. At some point I'll find a way to make that swappable/themeable.</p>
-<p>For now, here's what you need to know:</p>
+<p>Let's face it: few developers enjoy writing documentation. <code>clj-boot</code> works hard to get out of the way and let you focus on quickly and organically capturing your content.</p>
+<p>Here's what you need to know:</p>
 <ul>
-  <li>Metadata at the top of the Markdown file is merged into the site template.</li>
   <li>The master site template must be named <code>index.md</code> and must be stored in your <code>resources</code> folder.</li>
+  <li>Metadata at the top of the Markdown file is merged into the site template.</li>
   <li>Codox is automatically placed in a <code>codox</code> folder inside the <code>site</code> folder, so be sure to link that somewhere in your template.</li>
   <li><code>.md</code> files in your <code>docs</code> folder will automatically be added to your Codox.</li>
   <li><a href="https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md">Something like this</a> is a good site <code>index.md</code> start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.</li>
