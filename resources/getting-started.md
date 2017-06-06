@@ -45,10 +45,10 @@ Let's face it: few developers enjoy writing documentation.  ```clj-boot``` works
 
 Here's what you need to know:
 
-* The master site template must be named ```index.md``` and must be stored in your ```resources``` folder.
-* Metadata at the top of the Markdown file is merged into the site template.
-* Codox is automatically placed in a ```codox``` folder inside the ```site``` folder, so be sure to link that somewhere in your template.
-* ```.md``` files in your ```docs``` folder will automatically be added to your Codox.
+* The master site content is written using [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet), must be named ```index.md``` and must be stored in your project's ```resources``` folder.
+* Metadata at the top of the Markdown file is merged into the built-in site template.
+* Codox is automatically placed in a ```codox``` folder inside the ```site``` folder, so be sure to link that somewhere in your site.
+* ```.md``` files in your ```docs``` folder will automatically be added to your Codox and listed as topics in the Codox sidebar.
 * [Something like this](https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md) is a good site ```index.md``` start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.
 
 ## If you want to deploy to Clojars...
