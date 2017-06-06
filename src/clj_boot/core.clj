@@ -113,8 +113,8 @@ web based Clojure notebook and live coding environment (prints the URL at startu
   for the technique used."
   [v version VERSION str "The current project version"]
   (comp (generate-site)
-     (cmd :run (str "git add site"))
-     (cmd :run (str "git stage site"))
+     (cmd :run "git add site")
+     (cmd :run "git stage site")
      (cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
      (cmd :run "git subtree push --prefix site origin gh-pages")))
 
