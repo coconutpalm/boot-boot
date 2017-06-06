@@ -20,7 +20,7 @@ The resulting build file does not prevent you from composing the built-in tasks 
   {:project 'you/your-project
    :version "0.1.0-SNAPSHOT"
    :project-name "your-project"
-   :project-openness :open-source  ; (or :closed-source)
+   :project-openness :open-source  ; (or :private)
 
    :description "Project description."
 
