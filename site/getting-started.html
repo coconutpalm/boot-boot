@@ -31,10 +31,10 @@
 <p>Let's face it: few developers enjoy writing documentation. <code>clj-boot</code> works hard to get out of the way and let you focus on quickly and organically capturing your content.</p>
 <p>Here's what you need to know:</p>
 <ul>
-  <li>The master site template must be named <code>index.md</code> and must be stored in your <code>resources</code> folder.</li>
-  <li>Metadata at the top of the Markdown file is merged into the site template.</li>
-  <li>Codox is automatically placed in a <code>codox</code> folder inside the <code>site</code> folder, so be sure to link that somewhere in your template.</li>
-  <li><code>.md</code> files in your <code>docs</code> folder will automatically be added to your Codox.</li>
+  <li>The master site content is written using <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a>, must be named <code>index.md</code> and must be stored in your project's <code>resources</code> folder.</li>
+  <li>Metadata at the top of the Markdown file is merged into the built-in site template.</li>
+  <li>Codox is automatically placed in a <code>codox</code> folder inside the <code>site</code> folder, so be sure to link that somewhere in your site.</li>
+  <li><code>.md</code> files in your <code>docs</code> folder will automatically be added to your Codox and listed as topics in the Codox sidebar.</li>
   <li><a href="https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md">Something like this</a> is a good site <code>index.md</code> start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.</li>
 </ul>
 <h2><a href="#if-you-want-to-deploy-to-clojars-" name="if-you-want-to-deploy-to-clojars-"></a>If you want to deploy to Clojars...</h2>
