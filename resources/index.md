@@ -8,7 +8,7 @@ description: Batteries included Clojure builds based on Boot.
 * Maintain common build tasks in a single place, reducing repetition in your build files.  (Either clone this repository and customize it for your site or use it as-is from Clojars.)
 * ```boot dev```
     * Automatically rebuilds, retests, and reloads the REPL whenever you save.
-    * Automatic [Nightlight](https://sekao.net/nightlight/) live web notebook.
+    * [Nightlight](https://sekao.net/nightlight/) web notebook with your latest code automatically (re)loaded.
 * ```boot write-site``` - Easily create a project web site, styled with Twitter Bootstrap.
     * Just write content in Markdown.  The site is recreated on save.
     * Automatically generates API documentation using Codox.

@@ -6,7 +6,7 @@
             [boot.util :refer :all]
             [boot.task.built-in :refer :all]
             [clj-boot.docs :as docs]
-            [clj-boot.boot-cloverage :rever [cloverage]]
+            [clj-boot.boot-cloverage :refer [cloverage]]
             [clj-boot.string :refer [delimited-words]]
 
             [cpmcdaniel.boot-copy :refer [copy]]
