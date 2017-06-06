@@ -139,7 +139,8 @@ See the Getting Started Guide for details."
   (comp (assert-project-type :expect :open-source)
      (release-local)
      (release-site)
-     (push-release)))
+     (push-release)
+     (cmd :run "git push origin --tags")))
 
 
 (deftask uberjar
