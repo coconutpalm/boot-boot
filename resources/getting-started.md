@@ -41,16 +41,15 @@ The resulting build file does not prevent you from composing the built-in tasks 
 
 ## ```/resources/index.md``` is used to generate the site home page
 
-Currently the template hard-codes a Twitter Bootstrap based site.  At some point I'll find a way to make that swappable/themeable.
+Let's face it: few developers enjoy writing documentation.  ```clj-boot``` works hard to get out of the way and let you focus on quickly and organically capturing your content.
 
-For now, here's what you need to know:
+Here's what you need to know:
 
-* Metadata at the top of the Markdown file is merged into the site template.
 * The master site template must be named ```index.md``` and must be stored in your ```resources``` folder.
+* Metadata at the top of the Markdown file is merged into the site template.
 * Codox is automatically placed in a ```codox``` folder inside the ```site``` folder, so be sure to link that somewhere in your template.
 * ```.md``` files in your ```docs``` folder will automatically be added to your Codox.
 * [Something like this](https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md) is a good site ```index.md``` start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.
-
 
 ## If you want to deploy to Clojars...
 
