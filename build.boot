@@ -11,7 +11,7 @@
    :test-resources nil})
 
 
-(set-env! :resource-paths #{"resources"}
+(set-env! :resource-paths #{"resources" "site-src"}
           :source-paths   #{"src" "test"}
 
           :dependencies '[[org.clojure/clojure        "1.8.0"]
