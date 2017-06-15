@@ -24,7 +24,7 @@ Preconfigures Boot with the following common tasks/features:
     * On save, automatically updates your site and reloads your web browser (using ```LiveReload.js```).
     * Fast!  Only tens of milliseconds between saving your Markdown file and seeing the result in your browser.
 * ```boot write-full-site``` - Like ```boot write-site```, but generates full API documentation with Codox on each save too.
-    * Useful when editing docstrings in Clojure code for public consumption.
+    * Useful when editing docstrings in Clojure code.
 * ```boot release-site```
     * Quickly and automatically publishes your full project web site to Github Pages.
 * ```boot release``` - Deploy projects of type ```:open-source``` to Clojars and release the latest project web site to Github Pages.
