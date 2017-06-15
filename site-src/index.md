@@ -18,7 +18,7 @@ Preconfigures Boot with the following common tasks/features:
 * ```boot dev```
     * Automatically rebuilds, retests, and reloads the REPL whenever you save.
     * [Nightlight](https://sekao.net/nightlight/) web notebook / code editor with your latest code automatically (re)loaded.
-* ```boot write-site``` - Create a beautiful project web site styled using Twitter Bootstrap using Markdown.
+* ```boot write-site``` - Create a beautiful project web site using Markdown, styled using Twitter Bootstrap.
     * While under development, your site is hosted at http://localhost:3000
     * Just write content in Markdown and put it in the ```site-src``` folder.
     * On save, automatically updates your site and reloads your web browser (using ```LiveReload.js```).
