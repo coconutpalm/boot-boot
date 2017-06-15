@@ -36,7 +36,7 @@ Preconfigures Boot with the following common tasks/features:
 
 ## Install / use
 
-```clj-boot``` uses a standard Boot project directory structure, with some extra conventions about how to structure your ```build.boot``` file that reduce repetition.  Sample starter files are included in the [Getting Started](getting-started.html) guide.
+```clj-boot``` uses a standard Boot project directory structure, with some extra conventions about how to structure your ```build.boot``` file that reduces repetition.  Sample starter files are included in the [Getting Started](getting-started.html) guide.
 
 The latest version is:
 
