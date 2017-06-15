@@ -112,7 +112,10 @@ web based Clojure notebook and live coding environment (prints the URL at startu
   "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490
   for the technique used."
   [v version VERSION str "The current project version"]
-  (comp (generate-site)
+  (comp (assert-project-type :expect :open-source)
+     (generate-full-site)
+     (target)
+     (copy :output-dir "./" :matching #{#"\.*site\.*"})
      (cmd :run "git add site")
      (cmd :run "git stage site")
      (cmd :run (str "git commit -a -m 'Added documentation for version " version "'"))
