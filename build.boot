@@ -1,10 +1,10 @@
 (def task-options
   {:project  'coconutpalm/clj-boot
-   :version  "0.4.1"
+   :version  "0.5.0"
    :project-name "clj-boot"
    :project-openness :open-source
 
-   :description "Batteries included Clojure builds based on Boot."
+   :description "Batteries-included Clojure builds based on Boot."
    :scm-url "https://github.com/coconutpalm/clj-boot"
 
    :test-sources nil
@@ -21,6 +21,8 @@
                           [coconutpalm/clj-foundation "0.10.0"]
 
                           ;; Boot tasks
+                          [pandeiro/boot-http         "0.8.3"]
+                          [deraen/boot-livereload     "0.2.0"]
                           [boot-codox                 "0.10.3"]
                           [perun                      "0.3.0"]
                           [cpmcdaniel/boot-copy       "1.0"]
@@ -48,6 +50,8 @@
 (require '[codox.boot :refer [codox]])
 (require '[adzerk.boot-jar2bin :refer :all])
 (require '[io.perun :refer :all])
+(require '[pandeiro.boot-http :refer :all])
+(require '[deraen.boot-livereload :refer [livereload]])
 (require '[clj-boot.core :refer :all])
 
 

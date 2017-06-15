@@ -9,9 +9,11 @@
             [clj-boot.boot-cloverage :refer [cloverage]]
             [clj-boot.string :refer [delimited-words]]
 
+            [pandeiro.boot-http :refer :all]
             [cpmcdaniel.boot-copy :refer [copy]]
             [codox.boot :refer [codox]]
             [io.perun :refer [markdown render]]
+            [deraen.boot-livereload :refer [livereload]]
             [samestep.boot-refresh :refer [refresh]]
             [nightlight.boot :refer [nightlight]]
 
@@ -49,14 +51,28 @@ the 'expect' parameter."
 
 
 (deftask generate-site
-  "Generate web site from resources/index.md and Codox generated from source code.  See the Getting Started
+  "Generate web site from site-src/*.md only.  This version is much faster if you are just working
+on the Markdown documentation.  See the Getting Started Guide for details."
+  []
+  (comp (markdown)
+     (render :renderer 'clj-boot.docs/renderer)))
+
+
+(deftask generate-full-site
+  "Generate web site from site-src/*.md and Codox generated from source code.  See the Getting Started
 Guide for details."
   []
   (comp (markdown)
      (render :renderer 'clj-boot.docs/renderer)
-     (codox)
-     (target)
-     (copy :output-dir "./" :matching #{#"\.*site\.*"})))
+     (codox)))
+
+
+(deftask serve-site
+  "Serve the current web site documentation at localhost:3000.  Normally invoked composed with watchers and
+generators.  e.g.: (boot (watch) (generate-site) (serve-site))"
+  []
+  (comp (livereload :snippet true :asset-path "site" :filter #"\.(css|html|js)$")
+     (serve :resource-root "site")))
 
 
 (deftask write-site
@@ -64,7 +80,17 @@ Guide for details."
 whenever anything changes."
   []
   (comp (watch)
-     (generate-site)))
+     (generate-site)
+     (serve-site)))
+
+
+(deftask write-full-site
+  "Interactively work on web site documentation.  Watches the file system and calls (generate-full-site)
+whenever anything changes."
+  []
+  (comp (watch)
+     (generate-full-site)
+     (serve-site)))
 
 
 (deftask dev
