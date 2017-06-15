@@ -42,7 +42,7 @@ The latest version is:
 
 * [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/clj-boot.svg)](https://clojars.org/coconutpalm/clj-boot)
 
-Out-of-the box Boot tasks are documented in the [Codox](codox/index.html).
+All Boot tasks are documented in the [Codox](codox/index.html).
 
 
 ## Roadmap
