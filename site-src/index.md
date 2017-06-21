@@ -4,7 +4,7 @@ description: Batteries-included Clojure builds based on Boot.
 ---
 ## Why clj-boot?  Here are a few reasons:
 
-* Boot provides all of the tools needed to edit (and minimally reload) your Clojure application live, as it is running.  ```clj-boot``` integrates those tools in one place so you don't have to.
+* Boot provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running.  ```clj-boot``` integrates those tools in one place so you don't have to.
 * ```clj-boot``` extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.
 * A single command releases ```:open-source``` projects to Clojars, updates the project web site on Github Pages, tags the release, and pushes the release tag to Github.  And ```:private``` projects are protected against accidentally executing this task.
 
