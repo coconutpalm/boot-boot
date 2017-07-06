@@ -49,7 +49,6 @@ All Boot tasks are documented in the [Codox](codox/index.html).
 
 ### 1.0
 
-* Default Hiccup template to include a link to project home page.
 * Name and description metadata in web site should come from the build.boot file and not from the yaml header in the Markdown file.
 * Library development template project in Github.
 * Rework Getting Started Guide to reference template projects.

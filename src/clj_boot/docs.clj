@@ -41,4 +41,7 @@
           [:div {:class "container"}
            [:div {:class "row"}
             [:div {:class "col-md-12"}
-             (str (:content content))]]]]))
+             (str (:content content))
+             [:hr]
+             [:p [:a {:href "/"} "Back to home page"]]
+             [:p "&nbsp;"]]]]]))
