@@ -33,6 +33,9 @@ Preconfigures Boot with the following common tasks/features:
 
 (...and more, of course.  See the [Codox](codox/index.html) for details.)
 
+## What's new?
+
+See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to each release.
 
 ## Install / use
 
