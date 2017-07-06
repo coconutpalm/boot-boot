@@ -25,7 +25,7 @@
 
 (def project-types
   "Available project types set.  Currently one of :open-source or :private.  Only :open-source projects
-  can push to Clojars."
+  can push to Clojars or gh-pages."
   #{:open-source :private})
 
 (def project-type
