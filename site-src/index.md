@@ -52,13 +52,14 @@ All Boot tasks are documented in the [Codox](codox/index.html).
 * Name and description metadata in web site should come from the build.boot file and not from the yaml header in the Markdown file.
 * Library development template project in Github.
 * Rework Getting Started Guide to reference template projects.
-* Parameterize the documentation web server used during development.
-    * Port number
+* Parameterize:
+    * Doc template function
+    * Documentation web server used during development port number.
 
 ### 1.5
 
 * Web development template project (using Hoplon/Javelin/Castra) in Github.
-* Allow to customize options passed to Hiccup, including specifying a custom page template function.
+* Allow to customize options passed to Hiccup.
 * Introduce a project CSS file, making it easier to style/customize/rebrand Bootstrap elements in the web site.
 * Syntax highlighting for code samples in the web site.
 
