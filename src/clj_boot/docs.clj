@@ -43,5 +43,5 @@
             [:div {:class "col-md-12"}
              (str (:content content))
              [:hr]
-             [:p [:a {:href "/"} "Back to home page"]]
+             [:p [:a {:href "/"} "Home page"]]
              [:p "&nbsp;"]]]]]))
