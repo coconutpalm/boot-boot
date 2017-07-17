@@ -1,5 +1,5 @@
 ---
-name: clj-boot
+name: Boot Boot
 description: Batteries-included Clojure builds based on Boot.
 ---
 ## Why clj-boot?  Here are a few reasons:
