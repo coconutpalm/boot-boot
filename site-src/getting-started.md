@@ -1,17 +1,17 @@
 ---
-name: Boot Boot
+name: boot Boot
 description: Batteries included Clojure builds based on Boot.
 ---
 
 ## Getting Started
 
-This Getting Started guide covers the common case of using ```clj-boot ``` as-is.  Advanced developers may want to clone clj-boot and customize it for their own projects and use-cases.
+This Getting Started guide covers the common case of using ```boot-boot ``` as-is.  Advanced developers may want to clone boot-boot and customize it for their own projects and use-cases.
 
 ## Minimal build.boot
 
 The following ```build.boot``` is a good start for new projects.
 
-Since ```clj-boot``` provides default build tasks maintained in a single place, and multiple build tasks consume the same metadata, ```clj-boot``` supplies the basic project metadata in a map, and uses that map to configure itself in ```set-task-options!``` (at the bottom of the file).
+Since ```boot-boot``` provides default build tasks maintained in a single place, and multiple build tasks consume the same metadata, ```boot-boot``` supplies the basic project metadata in a map, and uses that map to configure itself in ```set-task-options!``` (at the bottom of the file).
 
 The resulting build file does not prevent you from composing the built-in tasks with your own or creating your own tasks, but I feel delivers the best of the declarative and task-based build worlds.
 
@@ -32,16 +32,16 @@ The resulting build file does not prevent you from composing the built-in tasks 
 
           :dependencies   '[[org.clojure/clojure  "1.8.0"]  ; Your Clojure version
                             ; Your dependencies here
-                            [coconutpalm/clj-boot "LATEST" :scope "test"]]) ; Or a specific version
+                            [coconutpalm/boot-boot "LATEST" :scope "test"]]) ; Or a specific version
 
-(require '[clj-boot.core :refer :all])
+(require '[boot-boot.core :refer :all])
 
 (set-task-options! task-options)
 ```
 
 ## ```/resources/index.md``` is used to generate the site home page
 
-Let's face it: few developers enjoy writing documentation.  ```clj-boot``` works hard to get out of the way and let you focus on quickly and organically capturing your content.
+Let's face it: few developers enjoy writing documentation.  ```boot-boot``` works hard to get out of the way and let you focus on quickly and organically capturing your content.
 
 Here's what you need to know:
 
@@ -49,7 +49,7 @@ Here's what you need to know:
 * Metadata at the top of the Markdown file is merged into the built-in site template.
 * Codox is automatically placed in a ```codox``` folder inside the ```site``` folder, so be sure to link that somewhere in your site.
 * ```.md``` files in your ```docs``` folder will automatically be added to your Codox and listed as topics in the Codox sidebar.
-* [Something like this](https://raw.githubusercontent.com/coconutpalm/clj-boot/master/resources/example-index.md) is a good site ```index.md``` start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.
+* [Something like this](https://raw.githubusercontent.com/coconutpalm/boot-boot/master/resources/example-index.md) is a good site ```index.md``` start since it provides the latest Maven/Lein/Boot/Ivy coordinates and links to the generated Codox.
 
 ## If you want to deploy to Clojars...
 
@@ -77,4 +77,4 @@ export CLOJARS_GPG_PASS='gpg-key-password-for-signing'
 
 ## Next steps
 
-The ```clj-boot``` [Codox](codox/index.html) lists the supplied Boot tasks along with hints for when to use each one.
+The ```boot-boot``` [Codox](codox/index.html) lists the supplied Boot tasks along with hints for when to use each one.

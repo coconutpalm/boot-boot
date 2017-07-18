@@ -1,7 +1,7 @@
 (def task-options
   {:project  'coconutpalm/boot-boot
-   :version  "0.5.3"
-   :project-name "boot-boot"
+   :version  "0.5.4"
+   :project-name "boot Boot"
    :project-openness :open-source
 
    :description "Batteries-included Clojure builds based on Boot."

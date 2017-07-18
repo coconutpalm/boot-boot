@@ -1,14 +1,18 @@
 ---
-name: Boot Boot
+name: boot Boot
 description: Batteries-included Clojure builds based on Boot.
 ---
-## Why clj-boot?  Here are a few reasons:
+## Why boot Boot?  Here are a few reasons:
 
-* Boot provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running.  ```clj-boot``` integrates those tools in one place so you don't have to.
-* ```clj-boot``` extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.
-* A single command releases ```:open-source``` projects to Clojars, updates the project web site on Github Pages, tags the release, and pushes the release tag to Github.  And ```:private``` projects are protected against accidentally executing this task.
+Clojure's Boot build tool provides incredible flexibility for composing simple build tasks like ```compile``` or ```translate-markdown``` into a complete development and release engineering workflow.
 
-clj-boot is built, documented, and deployed using itself.
+The challenge is that integrating the more sophisticated Boot tasks into a release engineering workflow requires a nontrivial amount of effort.  The ```boot Boot``` project performs those integrations so you don't have to and maintains them in a single place.  For example:
+
+* Boot provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running.  ```boot Boot``` integrates those tools in one place so you don't have to.
+* ```boot Boot``` extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.
+* ```boot Boot``` integrates all the tools to release ```:open-source``` projects to Clojars, update the project web site on Github Pages, tag the release, and push the release tag to Github.  (```:private``` projects are protected against accidentally executing this task.)
+
+boot Boot is built, documented, and deployed using itself.
 
 
 ## How?
@@ -39,11 +43,11 @@ See the [New and Noteworthy](new-and-noteworthy.html) document for details on wh
 
 ## Install / use
 
-```clj-boot``` uses a standard Boot project directory structure, with some extra conventions about how to structure your ```build.boot``` file that reduces repetition.  Sample starter files are included in the [Getting Started](getting-started.html) guide.
+```boot Boot``` uses a standard Boot project directory structure, with some extra conventions about how to structure your ```build.boot``` file that reduces repetition.  Sample starter files are included in the [Getting Started](getting-started.html) guide.
 
 The latest version is:
 
-* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/clj-boot.svg)](https://clojars.org/coconutpalm/clj-boot)
+* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/boot Boot.svg)](https://clojars.org/coconutpalm/boot Boot)
 
 All Boot tasks are documented in the [Codox](codox/index.html).
 
@@ -68,14 +72,14 @@ All Boot tasks are documented in the [Codox](codox/index.html).
 
 ### 2.0
 
-* ```boot new``` template for clj-boot projects
+* ```boot new``` template for boot Boot projects
 * Deploy somewhere other than Clojars for :private projects?
     * (Would need a way to register a deployer, since I can't anticipate all use-cases.)
 
 ### Uncommitted
 
-* Use clj-boot itself to create new projects from template projects, or maybe from itself.
-    * Pros: clj-boot can reuse the template files in its own documentation, easing maintenance.
+* Use boot Boot itself to create new projects from template projects, or maybe from itself.
+    * Pros: ```boot Boot``` can reuse the template files in its own documentation, easing maintenance.
     * Cons: Non-standard.
 * Extend the web site use cases beyond simple documentation.
     * Site map?

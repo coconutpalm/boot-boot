@@ -10,7 +10,7 @@ description: Subtitle for the "jumbotron" on the home page
 
 Add the latest version to your build.boot dependencies:
 
-* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/clj-boot.svg)](https://clojars.org/coconutpalm/clj-boot)
+* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/boot-boot.svg)](https://clojars.org/coconutpalm/boot-boot)
 
 (Substitute your Clojars badge or substitute as appropriate.)
 
