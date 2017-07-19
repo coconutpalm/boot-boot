@@ -1,18 +1,18 @@
 ---
 name: boot Boot
-description: Batteries-included Clojure builds based on Boot.
+description: Batteries-included Clojure builds.
 ---
 ## Why boot Boot?  Here are a few reasons:
 
-Clojure's Boot build tool provides incredible flexibility for composing simple build tasks like ```compile``` or ```translate-markdown``` into a complete development and release engineering workflow.
+Clojure's Boot build tool provides incredible flexibility for composing simple build tasks like ```compile``` or ```translate-markdown``` into a complete development and release workflow.
 
-The challenge is that integrating the more sophisticated Boot tasks into a release engineering workflow requires a nontrivial amount of effort.  The ```boot Boot``` project performs those integrations so you don't have to and maintains them in a single place.  For example:
+The challenge is that integrating the more sophisticated Boot tasks requires a nontrivial amount of effort.  The ```boot Boot``` project performs those integrations so you don't have to and maintains them in a single place.  For example, ```boot Boot```:
 
-* Boot provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running.  ```boot Boot``` integrates those tools in one place so you don't have to.
-* ```boot Boot``` extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.
-* ```boot Boot``` integrates all the tools to release ```:open-source``` projects to Clojars, update the project web site on Github Pages, tag the release, and push the release tag to Github.  (```:private``` projects are protected against accidentally executing this task.)
+* Provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running, while you are developing it.
+* Extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.  When you save a Markdown file, it is quickly translated into HTML and the web browser is automatically reloaded (using ```LiveReload.js```).
+* Integrates all the tools to release ```:open-source``` projects to Clojars, update the project web site on Github Pages, tag the release, and push the release tag to Github.  (```:private``` projects are protected against accidentally executing this task.)
 
-boot Boot is built, documented, and deployed using itself.
+ ```boot Boot``` is built, documented, and deployed using itself.
 
 
 ## How?
@@ -27,7 +27,7 @@ Preconfigures Boot with the following common tasks/features:
     * Just write content in Markdown and put it in the ```site-src``` folder.
     * On save, automatically updates your site and reloads your web browser (using ```LiveReload.js```).
     * Fast!  Only tens of milliseconds between saving your Markdown file and seeing the result in your browser.
-* ```boot write-full-site``` - Like ```boot write-site```, but generates full API documentation with Codox on each save too.
+* ```boot write-full-site``` - Like ```boot write-site```, and generates full API documentation with Codox on each save too.
     * Useful when editing docstrings in Clojure code.
 * ```boot release-site```
     * Quickly and automatically publishes your full project web site to Github Pages.
