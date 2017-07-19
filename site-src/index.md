@@ -47,7 +47,7 @@ See the [New and Noteworthy](new-and-noteworthy.html) document for details on wh
 
 The latest version is:
 
-* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/boot Boot.svg)](https://clojars.org/coconutpalm/boot Boot)
+* [![Clojars Project](https://img.shields.io/clojars/v/coconutpalm/boot-boot.svg)](https://clojars.org/coconutpalm/boot-boot)
 
 All Boot tasks are documented in the [Codox](codox/index.html).
 
