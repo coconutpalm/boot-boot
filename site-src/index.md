@@ -1,6 +1,6 @@
 ---
 name: boot Boot
-description: Batteries-included Clojure builds.
+description: Batteries-included Clojure development and release workflows using Boot.
 ---
 ## Why boot Boot?  Here are a few reasons:
 
@@ -39,7 +39,12 @@ Preconfigures Boot with the following common tasks/features:
 
 ## What's new?
 
-See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to each release.
+### 0.6
+
+* The Hiccup template used for documentation can now be overridden as a parameter to the documentation tasks.
+* The port number used by the documentation web server can now be overridden as a parameter to the write-site and write-full-site tasks.
+
+See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to other releases.
 
 ## Install / use
 
@@ -56,12 +61,8 @@ All Boot tasks are documented in the [Codox](codox/index.html).
 
 ### 1.0
 
-* Name and description metadata in web site should come from the build.boot file and not from the yaml header in the Markdown file.
 * Library development template project in Github.
 * Rework Getting Started Guide to reference template projects.
-* Parameterize:
-    * Doc template function
-    * Documentation web server used during development port number.
 
 ### 1.5
 
@@ -75,6 +76,7 @@ All Boot tasks are documented in the [Codox](codox/index.html).
 * ```boot new``` template for boot Boot projects
 * Deploy somewhere other than Clojars for :private projects?
     * (Would need a way to register a deployer, since I can't anticipate all use-cases.)
+* Name and description metadata in web site come from the build.boot file and not from the yaml header in the Markdown file. (Waiting on new Perun version)
 
 ### Uncommitted
 

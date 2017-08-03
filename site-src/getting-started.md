@@ -1,6 +1,6 @@
 ---
 name: boot Boot
-description: Batteries included Clojure builds based on Boot.
+description: Batteries-included Clojure development and release workflows using Boot.
 ---
 
 ## Getting Started
