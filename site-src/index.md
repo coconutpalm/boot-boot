@@ -6,7 +6,7 @@ description: Batteries-included Clojure development and release workflows using 
 
 Clojure's Boot build tool provides incredible flexibility for composing simple build tasks like ```compile``` or ```translate-markdown``` into a complete development and release workflow.
 
-The challenge is that integrating the more sophisticated Boot tasks requires a nontrivial amount of effort.  The ```boot Boot``` project performs those integrations so you don't have to and maintains them in a single place.  For example, ```boot Boot```:
+The challenge is that integrating the more sophisticated Boot tasks requires a nontrivial amount of effort.  The ```boot Boot``` project performs those integrations in a single place so you don't have to.  For example, ```boot Boot```:
 
 * Provides all of the tools needed to edit (and automatically reload) your Clojure application live, as it is running, while you are developing it.
 * Extends the live editing experience to writing project documentation using Markdown and Codox, styled using Twitter Bootstrap.  When you save a Markdown file, it is quickly translated into HTML and the web browser is automatically reloaded (using ```LiveReload.js```).
