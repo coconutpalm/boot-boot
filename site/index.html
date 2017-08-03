@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta content="Library Documentation - boot Boot - Batteries-included Clojure builds." itemprop="description" name="description"><title>boot Boot</title><link href="/favicon.ico" rel="shortcut icon"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet"><script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head><body><div class="jumbotron"><div class="container"><h1>boot Boot</h1><p>Batteries-included Clojure builds.</p></div></div><div class="container"><div class="row"><div class="col-md-12"><h2><a href="#why-boot-boot-here-are-a-few-reasons-" name="why-boot-boot-here-are-a-few-reasons-"></a>Why boot Boot? Here are a few reasons:</h2>
+<html lang="en"><head><meta charset="utf-8"><meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta content="width=device-width, initial-scale=1.0, user-scalable=no" name="viewport"><meta content="Library Documentation - boot Boot - Batteries-included Clojure development and release workflows using Boot." itemprop="description" name="description"><title>boot Boot</title><link href="/favicon.ico" rel="shortcut icon"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet"><link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro|Source+Serif+Pro" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Josefin+Slab" rel="stylesheet"><script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head><body><div class="jumbotron"><div class="container"><h1>boot Boot</h1><p>Batteries-included Clojure development and release workflows using Boot.</p></div></div><div class="container"><div class="row"><div class="col-md-12"><h2><a href="#why-boot-boot-here-are-a-few-reasons-" name="why-boot-boot-here-are-a-few-reasons-"></a>Why boot Boot? Here are a few reasons:</h2>
 <p>Clojure's Boot build tool provides incredible flexibility for composing simple build tasks like <code>compile</code> or <code>translate-markdown</code> into a complete development and release workflow.</p>
 <p>The challenge is that integrating the more sophisticated Boot tasks requires a nontrivial amount of effort. The <code>boot Boot</code> project performs those integrations so you don't have to and maintains them in a single place. For example, <code>boot Boot</code>:</p>
 <ul>
@@ -44,7 +44,12 @@
 </ul>
 <p>(...and more, of course. See the <a href="codox/index.html">Codox</a> for details.)</p>
 <h2><a href="#what-s-new-" name="what-s-new-"></a>What's new?</h2>
-<p>See the <a href="new-and-noteworthy.html">New and Noteworthy</a> document for details on what features have been added to each release.</p>
+<h3><a href="#0-6" name="0-6"></a>0.6</h3>
+<ul>
+  <li>The Hiccup template used for documentation can now be overridden as a parameter to the documentation tasks.</li>
+  <li>The port number used by the documentation web server can now be overridden as a parameter to the write-site and write-full-site tasks.</li>
+</ul>
+<p>See the <a href="new-and-noteworthy.html">New and Noteworthy</a> document for details on what features have been added to other releases.</p>
 <h2><a href="#install-use" name="install-use"></a>Install / use</h2>
 <p><code>boot Boot</code> uses a standard Boot project directory structure, with some extra conventions about how to structure your <code>build.boot</code> file that reduces repetition. Sample starter files are included in the <a href="getting-started.html">Getting Started</a> guide.</p>
 <p>The latest version is:</p>
@@ -55,15 +60,8 @@
 <h2><a href="#roadmap" name="roadmap"></a>Roadmap</h2>
 <h3><a href="#1-0" name="1-0"></a>1.0</h3>
 <ul>
-  <li>Name and description metadata in web site should come from the build.boot file and not from the yaml header in the Markdown file.</li>
   <li>Library development template project in Github.</li>
   <li>Rework Getting Started Guide to reference template projects.</li>
-  <li>Parameterize:
-    <ul>
-      <li>Doc template function</li>
-      <li>Documentation web server used during development port number.</li>
-    </ul>
-  </li>
 </ul>
 <h3><a href="#1-5" name="1-5"></a>1.5</h3>
 <ul>
@@ -80,6 +78,7 @@
       <li>(Would need a way to register a deployer, since I can't anticipate all use-cases.)</li>
     </ul>
   </li>
+  <li>Name and description metadata in web site come from the build.boot file and not from the yaml header in the Markdown file. (Waiting on new Perun version)</li>
 </ul>
 <h3><a href="#uncommitted" name="uncommitted"></a>Uncommitted</h3>
 <ul>
