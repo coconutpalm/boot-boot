@@ -83,7 +83,7 @@ Guide for details."
 (deftask serve-site
   "Serve the current web site documentation at localhost:3000.  Normally invoked composed with watchers and
 generators.  e.g.: (boot (watch) (generate-site) (serve-site))"
-  [p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
+  [p port PORT int "The port on localhost for serving the project web site.  Defaults to 3000."]
   (let [serve-args (concat [:resource-root "site"]
                            (if port
                              [:port port]
@@ -96,7 +96,7 @@ generators.  e.g.: (boot (watch) (generate-site) (serve-site))"
   "Interactively work on web site documentation.  Watches the file system and calls (generate-site)
 whenever anything changes."
   [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."
-   p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
+   p port PORT int "The port on localhost for serving the project web site.  Defaults to 3000."]
   (comp (watch)
      (generate-site :renderer renderer)
      (serve-site :port port)))
@@ -106,7 +106,7 @@ whenever anything changes."
   "Interactively work on web site documentation.  Watches the file system and calls (generate-full-site)
 whenever anything changes."
   [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."
-   p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
+   p port PORT int "The port on localhost for serving the project web site.  Defaults to 3000."]
   (comp (watch)
      (generate-full-site :renderer renderer)
      (serve-site :port port)))
@@ -116,11 +116,11 @@ whenever anything changes."
   "Interactively dev/test with a live application that automatically reloads changed namespaces.
 When you start dev mode, the nrepl server port is printed.  Also, automatically starts the 'nightlight'
 web based Clojure notebook and live coding environment (prints the URL at startup)."
-  []
+  [p port PORT int "The port on localhost for serving the nightlight notebook.  Defaults to a random port."]
   (comp (watch)
      (refresh)
      (repl :server true)
-     (nightlight :port 0)
+     (nightlight :port (or port 0))
      (test)
      (notify :audible true :visual true)))
 
