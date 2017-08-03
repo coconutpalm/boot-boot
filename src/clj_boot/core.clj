@@ -12,7 +12,7 @@
             [pandeiro.boot-http :refer :all]
             [cpmcdaniel.boot-copy :refer [copy]]
             [codox.boot :refer [codox]]
-            [io.perun :refer [markdown render]]
+            [io.perun :refer :all]
             [deraen.boot-livereload :refer [livereload]]
             [samestep.boot-refresh :refer [refresh]]
             [nightlight.boot :refer [nightlight]]
@@ -50,47 +50,66 @@ the 'expect' parameter."
       (next-handler fileset))))
 
 
+;; Future
+#_(deftask metadata
+  "Merge kvs in map into global markdown translator metadata as well as each file's metadata."
+  [v values META edn]
+  (with-pre-wrap fileset
+    (let [file-meta (perun/get-meta fileset)
+          global-meta (perun/get-global-meta fileset)
+          new-file-meta (reduce (fn [file-meta [k v]] (map #(assoc % k v) file-meta)) file-meta values)
+          new-global-meta (reduce (fn [global-meta [k v]] (assoc global-meta k v)) global-meta values)
+          updated-files   (perun/set-meta fileset new-file-meta)]
+      (perun/set-global-meta updated-files new-global-meta))))
+
+
+
 (deftask generate-site
   "Generate web site from site-src/*.md only.  This version is much faster if you are just working
 on the Markdown documentation.  See the Getting Started Guide for details."
-  []
+  [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."]
   (comp (markdown)
-     (render :renderer 'clj-boot.docs/renderer)))
+     (render :renderer (or renderer 'clj-boot.docs/renderer))))
 
 
 (deftask generate-full-site
   "Generate web site from site-src/*.md and Codox generated from source code.  See the Getting Started
 Guide for details."
-  []
-  (comp (markdown)
-     (render :renderer 'clj-boot.docs/renderer)
+  [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."]
+  (comp (generate-site :renderer renderer)
      (codox)))
 
 
 (deftask serve-site
   "Serve the current web site documentation at localhost:3000.  Normally invoked composed with watchers and
 generators.  e.g.: (boot (watch) (generate-site) (serve-site))"
-  []
-  (comp (livereload :snippet true :asset-path "site" :filter #"\.(css|html|js)$")
-     (serve :resource-root "site")))
+  [p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
+  (let [serve-args (concat [:resource-root "site"]
+                           (if port
+                             [:port port]
+                             []))]
+    (comp (livereload :snippet true :asset-path "site" :filter #"\.(css|html|js)$")
+       (apply serve serve-args))))
 
 
 (deftask write-site
   "Interactively work on web site documentation.  Watches the file system and calls (generate-site)
 whenever anything changes."
-  []
+  [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."
+   p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
   (comp (watch)
-     (generate-site)
-     (serve-site)))
+     (generate-site :renderer renderer)
+     (serve-site :port port)))
 
 
 (deftask write-full-site
   "Interactively work on web site documentation.  Watches the file system and calls (generate-full-site)
 whenever anything changes."
-  []
+  [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."
+   p port PORT num "The port on localhost for serving the project web site.  Defaults to a random port."]
   (comp (watch)
-     (generate-full-site)
-     (serve-site)))
+     (generate-full-site :renderer renderer)
+     (serve-site :port port)))
 
 
 (deftask dev
@@ -137,9 +156,10 @@ web based Clojure notebook and live coding environment (prints the URL at startu
 (deftask release-site
   "Push updated documentation to gh-pages.  See https://gist.github.com/cobyism/4730490
   for the technique used."
-  [v version VERSION str "The current project version"]
+  [v version VERSION str "The current project version"
+   r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."]
   (comp (assert-project-type :expect :open-source)
-     (generate-full-site)
+     (generate-full-site :renderer renderer)
      (target)
      (copy :output-dir "./" :matching #{#"\.*site\.*"})
      (cmd :run "git add site")
@@ -164,10 +184,10 @@ See the Getting Started Guide for details."
 
 Depends on CLOJARS_USER, CLOJARS_PASS, CLOJARS_GPG_USER, CLOJARS_GPG_PASS, envars.
 See the Getting Started Guide for details."
-  []
+  [r renderer RENDERER sym "A renderer function per Perun's documentation.  Defaults to 'clj-boot.docs/renderer."]
   (comp (assert-project-type :expect :open-source)
      (release-local)
-     (release-site)
+     (release-site :renderer renderer)
      (push-release)
      (cmd :run "git push origin --tags")))
 
