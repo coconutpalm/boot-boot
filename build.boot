@@ -1,10 +1,10 @@
 (def task-options
   {:project  'coconutpalm/boot-boot
-   :version  "0.5.4"
+   :version  "0.6.0"
    :project-name "boot Boot"
    :project-openness :open-source
 
-   :description "Batteries-included Clojure builds based on Boot."
+   :description "Batteries-included Clojure development and release workflows using Boot."
    :scm-url "https://github.com/coconutpalm/boot-boot"
 
    :test-sources nil
