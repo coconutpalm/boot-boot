@@ -7,6 +7,10 @@ description: Batteries-included Clojure development and release workflows using 
 Generally I follow a policy of releasing features whenever they are ready, not when a new major release is ready.  This page records the features that have gone into each release.
 
 
+### 0.6.1
+
+* Upgrade to Clojure 1.9 and upgrade other dependencies
+
 ### 0.6
 
 * The Hiccup template used for documentation can be overridden as a parameter to the documentation tasks.
