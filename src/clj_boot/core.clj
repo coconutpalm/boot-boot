@@ -206,7 +206,8 @@ See the Getting Started Guide for details."
 (deftask uberbin
   "Run tests, and build a direct-executable, aot'd uberjar."
   []
-  (comp (uberjar)
+  (comp (aot)
+     (uberjar)
      (bin)))
 
 
