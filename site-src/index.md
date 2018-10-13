@@ -39,10 +39,10 @@ Preconfigures Boot with the following common tasks/features:
 
 ## What's new?
 
-### 0.6
+### 0.6.4
 
-* The Hiccup template used for documentation can now be overridden as a parameter to the documentation tasks.
-* The port number used by the documentation web server can now be overridden as a parameter to the write-site and write-full-site tasks.
+* The `uberbin` task wasn't `:aot :all`ing code.  Fixed.
+* Added optional Cider support via a (cider) task for dev environments that expect Cider middleware in the REPL. Enable by placing ahead of the repl. e.g.: `$ boot cider dev`
 
 See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to other releases.
 

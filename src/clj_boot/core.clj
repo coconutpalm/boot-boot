@@ -52,15 +52,15 @@ the 'expect' parameter."
 
 ;; Future
 #_(deftask metadata
-  "Merge kvs in map into global markdown translator metadata as well as each file's metadata."
-  [v values META edn]
-  (with-pre-wrap fileset
-    (let [file-meta (perun/get-meta fileset)
-          global-meta (perun/get-global-meta fileset)
-          new-file-meta (reduce (fn [file-meta [k v]] (map #(assoc % k v) file-meta)) file-meta values)
-          new-global-meta (reduce (fn [global-meta [k v]] (assoc global-meta k v)) global-meta values)
-          updated-files   (perun/set-meta fileset new-file-meta)]
-      (perun/set-global-meta updated-files new-global-meta))))
+   "Merge kvs in map into global markdown translator metadata as well as each file's metadata."
+   [v values META edn]
+   (with-pre-wrap fileset
+     (let [file-meta (perun/get-meta fileset)
+           global-meta (perun/get-global-meta fileset)
+           new-file-meta (reduce (fn [file-meta [k v]] (map #(assoc % k v) file-meta)) file-meta values)
+           new-global-meta (reduce (fn [global-meta [k v]] (assoc global-meta k v)) global-meta values)
+           updated-files   (perun/set-meta fileset new-file-meta)]
+       (perun/set-global-meta updated-files new-global-meta))))
 
 
 
@@ -110,6 +110,24 @@ whenever anything changes."
   (comp (watch)
      (generate-full-site :renderer renderer)
      (serve-site :port port)))
+
+
+(deftask cider
+  "Add Cider dependencies for development tools that expect Cider middleware in the REPL.  Not all tools
+expect this and it adds dependencies to your build so it's not enabled by default.  Usage example:
+
+\"boot cider dev\"  ; or
+(boot cider dev)"
+  []
+  (require 'boot.repl)
+  (swap! @(resolve 'boot.repl/*default-dependencies*)
+         concat '[[org.clojure/tools.nrepl "0.2.13"]
+                  [cider/cider-nrepl "0.18.0"]
+                  [refactor-nrepl "2.4.0"]])
+  (swap! @(resolve 'boot.repl/*default-middleware*)
+         concat '[cider.nrepl/cider-middleware
+                  refactor-nrepl.middleware/wrap-refactor])
+  identity)
 
 
 (deftask dev
@@ -206,7 +224,7 @@ See the Getting Started Guide for details."
 (deftask uberbin
   "Run tests, and build a direct-executable, aot'd uberjar."
   []
-  (comp (aot)
+  (comp (aot :all true)
      (uberjar)
      (bin)))
 

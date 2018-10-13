@@ -1,6 +1,6 @@
 (def task-options
   {:project  'coconutpalm/boot-boot
-   :version  "0.6.3"
+   :version  "0.6.4"
    :project-name "boot Boot"
    :project-openness :open-source
 
@@ -27,7 +27,7 @@
                           [hiccup                     "1.0.5"]
                           [org.clojure/test.check     "0.9.0"]
                           [samestep/boot-refresh      "0.1.0"]
-                          [nightlight                 "2.2.2"] ;; Nightlight 1.6.4?
+                          [nightlight                 "2.3.2"] ;; Nightlight 1.6.4?
 
                           [boot/new                   "0.5.2"]
                           [tolitius/boot-check        "0.1.9"]
