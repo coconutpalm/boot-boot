@@ -11,7 +11,7 @@
 <h2><a href="#how-" name="how-"></a>How?</h2>
 <p>Preconfigures Boot with the following common tasks/features:</p>
 <ul>
-  <li><code>boot dev</code>
+  <li><code>boot dev</code> or <code>boot cider dev</code>
     <ul>
       <li>Automatically rebuilds, retests, and reloads the REPL whenever you save.</li>
       <li><a href="https://sekao.net/nightlight/">Nightlight</a> web notebook / code editor with your latest code automatically (re)loaded.</li>
@@ -44,10 +44,9 @@
 </ul>
 <p>(...and more, of course. See the <a href="codox/index.html">Codox</a> for details.)</p>
 <h2><a href="#what-s-new-" name="what-s-new-"></a>What's new?</h2>
-<h3><a href="#0-6-4" name="0-6-4"></a>0.6.4</h3>
+<h3><a href="#0-6-5" name="0-6-5"></a>0.6.5</h3>
 <ul>
-  <li>The <code>uberbin</code> task wasn't <code>:aot :all</code>ing code. Fixed.</li>
-  <li>Added optional Cider support via a (cider) task for dev environments that expect Cider middleware in the REPL. Enable by placing ahead of the repl. e.g.: <code>$ boot cider dev</code></li>
+  <li><code>boot serve</code> now uses coconutpalm/boot-server</li>
 </ul>
 <p>See the <a href="new-and-noteworthy.html">New and Noteworthy</a> document for details on what features have been added to other releases.</p>
 <h2><a href="#install-use" name="install-use"></a>Install / use</h2>
