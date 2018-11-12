@@ -19,7 +19,7 @@ The challenge is that integrating the more sophisticated Boot tasks requires a n
 
 Preconfigures Boot with the following common tasks/features:
 
-* ```boot dev```
+* ```boot dev``` or `boot cider dev`
     * Automatically rebuilds, retests, and reloads the REPL whenever you save.
     * [Nightlight](https://sekao.net/nightlight/) web notebook / code editor with your latest code automatically (re)loaded.
 * ```boot write-site``` - Create a beautiful project web site using Markdown, styled using Twitter Bootstrap.
@@ -39,10 +39,9 @@ Preconfigures Boot with the following common tasks/features:
 
 ## What's new?
 
-### 0.6.4
+### 0.6.5
 
-* The `uberbin` task wasn't `:aot :all`ing code.  Fixed.
-* Added optional Cider support via a (cider) task for dev environments that expect Cider middleware in the REPL. Enable by placing ahead of the repl. e.g.: `$ boot cider dev`
+* `boot serve` now uses coconutpalm/boot-server
 
 See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to other releases.
 

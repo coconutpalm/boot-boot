@@ -1,6 +1,6 @@
 (def task-options
   {:project  'coconutpalm/boot-boot
-   :version  "0.6.4"
+   :version  "0.6.5"
    :project-name "boot Boot"
    :project-openness :open-source
 
@@ -19,7 +19,7 @@
                           [coconutpalm/clj-foundation "0.10.0"]
 
                           ;; Boot tasks
-                          [pandeiro/boot-http         "0.8.3"]
+                          [coconutpalm/boot-server    "0.9.1"]
                           [deraen/boot-livereload     "0.2.1"]
                           [boot-codox                 "0.10.3"]
                           [perun                      "0.3.0"]

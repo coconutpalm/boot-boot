@@ -6,6 +6,10 @@ description: Batteries-included Clojure development and release workflows using 
 
 Generally I follow a policy of releasing features whenever they are ready, not when a new major release is ready.  This page records the features that have gone into each release.
 
+### 0.6.5
+
+* `boot serve` now uses coconutpalm/boot-server
+
 ### 0.6.4
 
 * The `uberbin` task wasn't `:aot :all`ing code.  Fixed.
