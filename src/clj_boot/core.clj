@@ -15,7 +15,6 @@
             [io.perun :refer :all]
             [deraen.boot-livereload :refer [livereload]]
             [samestep.boot-refresh :refer [refresh]]
-            [nightlight.boot :refer [nightlight]]
 
             [adzerk.boot-test :refer [test]]
             [adzerk.bootlaces :refer :all]
@@ -132,15 +131,17 @@ expect this and it adds dependencies to your build so it's not enabled by defaul
 
 (deftask dev
   "Interactively dev/test with a live application that automatically reloads changed namespaces.
-When you start dev mode, the nrepl server port is printed.  Also, automatically starts the 'nightlight'
-web based Clojure notebook and live coding environment (prints the URL at startup)."
-  [p port PORT int "The port on localhost for serving the nightlight notebook.  Defaults to a random port."]
+When you start dev mode, the nrepl server port is printed.  To use this with Cider middleware,
+add the \"cider\" task ahead of the \"dev\" task.  For example:
+
+\"boot cider dev \"  ; or
+(boot cider dev)"
+  []
   (comp (watch)
-     (refresh)
-     (repl :server true)
-     (nightlight :port (or port 0))
-     (test)
-     (notify :audible true :visual true)))
+        (refresh)
+        (repl :server true)
+        (test)
+        (notify :audible true :visual true)))
 
 
 (deftask lint

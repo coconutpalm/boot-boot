@@ -21,7 +21,6 @@ Preconfigures Boot with the following common tasks/features:
 
 * ```boot dev``` or `boot cider dev`
     * Automatically rebuilds, retests, and reloads the REPL whenever you save.
-    * [Nightlight](https://sekao.net/nightlight/) web notebook / code editor with your latest code automatically (re)loaded.
 * ```boot write-site``` - Create a beautiful project web site using Markdown, styled using Twitter Bootstrap.
     * While under development, your site is hosted at http://localhost:3000
     * Just write content in Markdown and put it in the ```site-src``` folder.
@@ -41,7 +40,9 @@ Preconfigures Boot with the following common tasks/features:
 
 ### 0.7.0
 
-* `nightlight` is no longer supported by default, which is technically a breaking change, hence the minor version bump.
+A dependency cleanup release, with a few minor breaking changes documented below.
+
+* `nightlight` is no longer supported by default.  The `--port` option to the `dev` task is removed.
 * `boot-serve` backed by Immutant no longer selects a default logger; you have to supply your own slf4j implementation.
 
 See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to other releases.
