@@ -40,7 +40,7 @@ Preconfigures Boot with the following common tasks/features:
 
 ### 0.7.0
 
-A dependency cleanup release, with a few minor breaking changes documented below.
+A dependency cleanup release, with a few minor breaking changes documented below:
 
 * `nightlight` is no longer supported by default.  The `--port` option to the `dev` task is removed.
 * `boot-serve` backed by Immutant no longer selects a default logger; you have to supply your own slf4j implementation.
