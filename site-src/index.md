@@ -39,9 +39,10 @@ Preconfigures Boot with the following common tasks/features:
 
 ## What's new?
 
-### 0.6.5
+### 0.7.0
 
-* `boot serve` now uses coconutpalm/boot-server
+* `nightlight` is no longer supported by default, which is technically a breaking change, hence the minor version bump.
+* `boot-serve` backed by Immutant no longer selects a default logger; you have to supply your own slf4j implementation.
 
 See the [New and Noteworthy](new-and-noteworthy.html) document for details on what features have been added to other releases.
 

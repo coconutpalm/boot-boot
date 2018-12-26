@@ -6,6 +6,11 @@ description: Batteries-included Clojure development and release workflows using 
 
 Generally I follow a policy of releasing features whenever they are ready, not when a new major release is ready.  This page records the features that have gone into each release.
 
+### 0.7.0
+
+* `nightlight` is no longer supported by default, which is technically a breaking change, hence the minor version bump.
+* `boot-serve` with Immutant no longer selects a default logger; you have to supply your own slf4j implementation.
+
 ### 0.6.5
 
 * `boot serve` now uses coconutpalm/boot-server
