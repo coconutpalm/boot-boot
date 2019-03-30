@@ -138,10 +138,10 @@ add the \"cider\" task ahead of the \"dev\" task.  For example:
 (boot cider dev)"
   []
   (comp (watch)
-        (refresh)
-        (repl :server true)
-        (test)
-        (notify :audible true :visual true)))
+     (refresh)
+     (repl :server true)
+     (test)
+     (notify :audible true :visual true)))
 
 
 (deftask lint
