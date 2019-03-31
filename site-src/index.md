@@ -38,6 +38,10 @@ Preconfigures Boot with the following common tasks/features:
 
 ## What's new?
 
+### 0.7.1
+
+Updated nrepl, cider, and friends to latest versions.
+
 ### 0.7.0
 
 A dependency cleanup release, with a few minor breaking changes documented below.
