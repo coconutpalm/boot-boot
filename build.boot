@@ -1,6 +1,6 @@
 (def task-options
   {:project  'coconutpalm/boot-boot
-   :version  "0.7.0"
+   :version  "0.7.1"
    :project-name "boot Boot"
    :project-openness :open-source
 
